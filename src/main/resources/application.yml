@@ -18,14 +18,14 @@ spring:
   # todo 需替换配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bkbi
+    url: jdbc:mysql://106.55.59.85:3306/bkbi
     username: root
-    password: 123456
+    password:
   # Redis 配置
   # todo 需替换配置，然后取消注释
   redis:
     database: 1
-    host: 124.71.140.61
+    host: 106.55.59.85
     port: 6379
     timeout: 5000
   rabbitmq:
@@ -90,11 +90,11 @@ wx:
 # todo 需替换配置
 cos:
   client:
-    accessKey: AKID7A7vZebVK4lMqEZnsqz1tb9XmxzugKCx
-    secretKey: jHjBOXZVN6f7RdidQ4Z6Wo2BG2mATitw
-    region: https://bkb-1322094097.cos.ap-guangzhou.myqcloud.com
-    bucket: bkb
+    accessKey:
+    secretKey:
+    region:
+    bucket:
 yuapi:
   client:
-    access-key: zgorob3heob29wd3eo66uc7z7bhu0ei0
-    secret-key: vgaqx2twv3bhnnb6hxf8yj11zall3hgw
+    access-key:
+    secret-key:

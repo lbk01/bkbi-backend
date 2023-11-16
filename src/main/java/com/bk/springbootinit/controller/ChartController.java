@@ -3,6 +3,7 @@ package com.bk.springbootinit.controller;
 import cn.hutool.core.io.FileUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.bk.springbootinit.bizmq.BiMessageProducer;
 import com.bk.springbootinit.manager.AiManager;
 import com.bk.springbootinit.manager.RedisLimiterManager;
 import com.bk.springbootinit.model.enums.GenChartStatusEnum;
@@ -59,6 +60,9 @@ public class ChartController {
 
     @Resource
     private UserService userService;
+
+    @Resource
+    BiMessageProducer biMessageProducer;
 
 
     @Resource
@@ -540,7 +544,7 @@ public class ChartController {
         boolean saveResult = chartService.save(chart);
         ThrowUtils.throwIf(!saveResult, ErrorCode.SYSTEM_ERROR, "图表保存失败");
 //       这里发个消息就好了，我其实该把每份都抽象出来的
-
+        biMessageProducer.sentMessage(chart.getId()+"");
         BiResponse biResponse = new BiResponse();
         biResponse.setChartId(chart.getId());
         return ResultUtils.success(biResponse);
